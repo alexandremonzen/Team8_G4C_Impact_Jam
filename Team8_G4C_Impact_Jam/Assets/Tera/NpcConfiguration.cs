@@ -4,96 +4,136 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NpcConfiguration : MonoBehaviour
+public class NpcConfiguration : MonoBehaviour, IInteractable
 {
-    public string Name;
-    public bool IsTranslated;
-    public bool HasItem;
-    private bool InDialogue;
-    private bool Active;
-    public Dialogue ActiveDialogue;
-    public GameObject DialogueUI;
-    public Sprite[] TitleImages;
-    public TextMeshProUGUI TitleUI;
-    public TextMeshProUGUI TextUI;
-    public Image TitleImageUI;
-    public GameObject Item;
+    [Header("NPC Info")]
+    [SerializeField] private string _name;
 
-    void Update()
+    [Header("Quest")]
+    [SerializeField] private ItemType _requiredItem;
+    [SerializeField] private GameObject _itemToSpawn;
+
+    [Header("UI")]
+    [SerializeField] private Dialogue _activeDialogue;
+    [SerializeField] private GameObject _dialogueUI;
+    [SerializeField] private TextMeshProUGUI _titleUI;
+    [SerializeField] private TextMeshProUGUI _textUI;
+    [SerializeField] private Image _titleImageUI;
+    [SerializeField] private Sprite[] _titleImages;
+
+    private bool _isTranslated;
+    private bool _inDialogue;
+    private bool _active;
+
+    private void Awake()
     {
-        DialogueUI.GetComponent<Animator>().SetBool("Active", InDialogue);
-        if (Physics2D.OverlapCircle(transform.position, 3).CompareTag("Player") && Input.GetKeyDown(KeyCode.E) && !InDialogue)
-            StartDialogue();
+        _inDialogue = false;
+    }
 
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.E)) && InDialogue && !Active)
-            switch (ActiveDialogue.AfterOption)
+    public void Interact(PlayerInteraction playerInteraction)
+    {
+        playerInteraction.PlayerMovement.RemoveAllMovement();
+        if (!_inDialogue)
+        {
+            StartDialogue();
+            return;
+        }
+
+        if (_inDialogue && !_active)
+        {
+            switch (_activeDialogue.AfterOption)
             {
                 case Dialogue.AfterD.End:
-                    InDialogue = false;
+                    _inDialogue = false;
+                    playerInteraction.PlayerMovement.ReturnAllMovement();
+                    _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
                     break;
+
                 case Dialogue.AfterD.EndReplace:
-                    InDialogue = false;
-                    ActiveDialogue = ActiveDialogue.ReplaceDialogue;
+                    _inDialogue = false;
+                    _activeDialogue = _activeDialogue.ReplaceDialogue;
+                    _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
+                    playerInteraction.PlayerMovement.ReturnAllMovement();
                     break;
+
                 case Dialogue.AfterD.NextReplace:
-                    ActiveDialogue = ActiveDialogue.ReplaceDialogue;
+                    _activeDialogue = _activeDialogue.ReplaceDialogue;
                     StartDialogue();
                     break;
+
                 case Dialogue.AfterD.NextReplaceIfComplete:
-                    if (HasItem)
+                    if (playerInteraction.PlayerHoldItem.ActualHoldingItem)
                     {
-                        ActiveDialogue = ActiveDialogue.ReplaceDialogue;
-                        StartDialogue();
+                        if (playerInteraction.PlayerHoldItem.ActualHoldingItem.ItemType == _requiredItem)
+                        {
+                            _activeDialogue = _activeDialogue.ReplaceDialogue;
+                            playerInteraction.PlayerHoldItem.DisappearActualItem();
+                            StartDialogue();
+                        }
+                        else
+                        {
+                            _inDialogue = false;
+                            playerInteraction.PlayerMovement.ReturnAllMovement();
+                            _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
+                        }
                     }
                     else
-                        InDialogue = false;
+                    {
+                        _inDialogue = false;
+                        _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
+                        playerInteraction.PlayerMovement.ReturnAllMovement();
+                    }
                     break;
             }
-        else
+
+            return;
+        }
+
+        if (_active)
         {
-            if (Input.GetKeyDown(KeyCode.Space) && Active)
-            {
-                StopAllCoroutines();
-                Active = false;
-                TextUI.text = ActiveDialogue.Text;
-            }
+            StopAllCoroutines();
+            _active = false;
+            _textUI.text = _activeDialogue.Text;
         }
     }
 
-    IEnumerator TypeSentence(string sentence)
+    private IEnumerator TypeSentence(string sentence)
     {
-        Active = true;
+        _active = true;
         char[] array = sentence.ToCharArray();
-        TextUI.text = array[0].ToString();
+        _textUI.text = array[0].ToString();
         for (int i = 1; i < array.Length; ++i)
         {
-            yield return new WaitForSeconds(0.02f);
-            TextUI.text += array[i];
+            yield return new WaitForSecondsRealtime(0.05f);
+            _textUI.text += array[i];
+            yield return null;
         }
-        Active = false;
-
+        _active = false;
+        yield return null;
     }
 
     public void StartDialogue()
     {
-        InDialogue = true;
-        switch(ActiveDialogue.Name)
+        _inDialogue = true;
+        _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
+        switch (_activeDialogue.Name)
         {
             case Dialogue.Character.Player:
-                TitleUI.text = "YOU";
-                TitleImageUI.sprite = TitleImages[0];
+                _titleUI.text = "YOU";
+                _titleImageUI.sprite = _titleImages[0];
                 break;
             case Dialogue.Character.Cat:
-                TitleUI.text = Name;
-                TitleImageUI.sprite = TitleImages[1];
+                _titleUI.text = _name;
+                _titleImageUI.sprite = _titleImages[1];
                 break;
             case Dialogue.Character.Dog:
-                TitleUI.text = Name;
-                TitleImageUI.sprite = TitleImages[2];
+                _titleUI.text = _name;
+                _titleImageUI.sprite = _titleImages[2];
                 break;
         }
-        if (ActiveDialogue.ActivateObject)
-            Item.SetActive(true);
-        StartCoroutine(TypeSentence(ActiveDialogue.Text));
+        if (_activeDialogue.ActivateObject)
+            _itemToSpawn.SetActive(true);
+
+        StartCoroutine(TypeSentence(_activeDialogue.Text));
     }
 }

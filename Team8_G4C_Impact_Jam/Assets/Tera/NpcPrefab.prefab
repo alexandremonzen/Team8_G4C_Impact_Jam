@@ -534,19 +534,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3794e090ed214a044b907373ae026b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: APOLLO
-  IsTranslated: 0
-  HasItem: 0
-  ActiveDialogue: {fileID: 11400000, guid: ef48384067d24aa4fa72c436aff66ebf, type: 2}
-  DialogueUI: {fileID: 364983966886430860}
-  TitleImages:
+  _name: APOLLO
+  _requiredItem: 1
+  _itemToSpawn: {fileID: 0}
+  _activeDialogue: {fileID: 11400000, guid: ef48384067d24aa4fa72c436aff66ebf, type: 2}
+  _dialogueUI: {fileID: 364983966886430860}
+  _titleUI: {fileID: 1920449797}
+  _textUI: {fileID: 8419970128280080088}
+  _titleImageUI: {fileID: 1027705405}
+  _titleImages:
   - {fileID: 21300000, guid: 5d90f9f62118d56429c9513ce5b1dbcc, type: 3}
   - {fileID: 21300000, guid: 874d8de9ac3ee464d95f1ba57c98f844, type: 3}
   - {fileID: 21300000, guid: 82a68cd7f6bdc4846ad50d472ac2ae7f, type: 3}
-  TitleUI: {fileID: 1920449797}
-  TextUI: {fileID: 8419970128280080088}
-  TitleImageUI: {fileID: 1027705405}
-  Item: {fileID: 0}
+  IsTranslated: 0
 --- !u!61 &1463662929
 BoxCollider2D:
   m_ObjectHideFlags: 0
