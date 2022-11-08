@@ -96,13 +96,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""PlayerJump"",
-            ""id"": ""c6f20d09-a8ae-4f08-93d8-88b98f93593e"",
+            ""name"": ""PlayerInteraction"",
+            ""id"": ""69f0bd0f-761b-4aad-8ec5-739e81626500"",
             ""actions"": [
                 {
-                    ""name"": ""Jump"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""79e8cb5a-ca14-44e8-bcee-dc4caba5dc47"",
+                    ""id"": ""9bfa37d2-cbed-4a3b-a7bb-71711165f5f4"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -112,12 +112,40 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""cb686191-d268-44b0-892b-32fac9db8891"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""42237183-4199-4afd-a352-7bb1fdbbf226"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Jump"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""PlayerHoldItem"",
+            ""id"": ""8b4b67d2-2495-43ec-8f24-58347277130a"",
+            ""actions"": [
+                {
+                    ""name"": ""DropItem"",
+                    ""type"": ""Button"",
+                    ""id"": ""66222c67-45ce-432a-93b4-54c389c373b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5ad4eb5c-f2b9-4ec8-bf72-ceaaf68e4c70"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DropItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -157,9 +185,12 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // PlayerMovement
         m_PlayerMovement = asset.FindActionMap("PlayerMovement", throwIfNotFound: true);
         m_PlayerMovement_Movement = m_PlayerMovement.FindAction("Movement", throwIfNotFound: true);
-        // PlayerJump
-        m_PlayerJump = asset.FindActionMap("PlayerJump", throwIfNotFound: true);
-        m_PlayerJump_Jump = m_PlayerJump.FindAction("Jump", throwIfNotFound: true);
+        // PlayerInteraction
+        m_PlayerInteraction = asset.FindActionMap("PlayerInteraction", throwIfNotFound: true);
+        m_PlayerInteraction_Interact = m_PlayerInteraction.FindAction("Interact", throwIfNotFound: true);
+        // PlayerHoldItem
+        m_PlayerHoldItem = asset.FindActionMap("PlayerHoldItem", throwIfNotFound: true);
+        m_PlayerHoldItem_DropItem = m_PlayerHoldItem.FindAction("DropItem", throwIfNotFound: true);
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
         m_General_Pause = m_General.FindAction("Pause", throwIfNotFound: true);
@@ -252,38 +283,71 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     }
     public PlayerMovementActions @PlayerMovement => new PlayerMovementActions(this);
 
-    // PlayerJump
-    private readonly InputActionMap m_PlayerJump;
-    private IPlayerJumpActions m_PlayerJumpActionsCallbackInterface;
-    private readonly InputAction m_PlayerJump_Jump;
-    public struct PlayerJumpActions
+    // PlayerInteraction
+    private readonly InputActionMap m_PlayerInteraction;
+    private IPlayerInteractionActions m_PlayerInteractionActionsCallbackInterface;
+    private readonly InputAction m_PlayerInteraction_Interact;
+    public struct PlayerInteractionActions
     {
         private @PlayerInputActions m_Wrapper;
-        public PlayerJumpActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Jump => m_Wrapper.m_PlayerJump_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_PlayerJump; }
+        public PlayerInteractionActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interact => m_Wrapper.m_PlayerInteraction_Interact;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerJumpActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerJumpActions instance)
+        public static implicit operator InputActionMap(PlayerInteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerInteractionActions instance)
         {
-            if (m_Wrapper.m_PlayerJumpActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerInteractionActionsCallbackInterface != null)
             {
-                @Jump.started -= m_Wrapper.m_PlayerJumpActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerJumpActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerJumpActionsCallbackInterface.OnJump;
+                @Interact.started -= m_Wrapper.m_PlayerInteractionActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerInteractionActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerInteractionActionsCallbackInterface.OnInteract;
             }
-            m_Wrapper.m_PlayerJumpActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerInteractionActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Jump.started += instance.OnJump;
-                @Jump.performed += instance.OnJump;
-                @Jump.canceled += instance.OnJump;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
-    public PlayerJumpActions @PlayerJump => new PlayerJumpActions(this);
+    public PlayerInteractionActions @PlayerInteraction => new PlayerInteractionActions(this);
+
+    // PlayerHoldItem
+    private readonly InputActionMap m_PlayerHoldItem;
+    private IPlayerHoldItemActions m_PlayerHoldItemActionsCallbackInterface;
+    private readonly InputAction m_PlayerHoldItem_DropItem;
+    public struct PlayerHoldItemActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public PlayerHoldItemActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @DropItem => m_Wrapper.m_PlayerHoldItem_DropItem;
+        public InputActionMap Get() { return m_Wrapper.m_PlayerHoldItem; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(PlayerHoldItemActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerHoldItemActions instance)
+        {
+            if (m_Wrapper.m_PlayerHoldItemActionsCallbackInterface != null)
+            {
+                @DropItem.started -= m_Wrapper.m_PlayerHoldItemActionsCallbackInterface.OnDropItem;
+                @DropItem.performed -= m_Wrapper.m_PlayerHoldItemActionsCallbackInterface.OnDropItem;
+                @DropItem.canceled -= m_Wrapper.m_PlayerHoldItemActionsCallbackInterface.OnDropItem;
+            }
+            m_Wrapper.m_PlayerHoldItemActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @DropItem.started += instance.OnDropItem;
+                @DropItem.performed += instance.OnDropItem;
+                @DropItem.canceled += instance.OnDropItem;
+            }
+        }
+    }
+    public PlayerHoldItemActions @PlayerHoldItem => new PlayerHoldItemActions(this);
 
     // General
     private readonly InputActionMap m_General;
@@ -321,9 +385,13 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
     }
-    public interface IPlayerJumpActions
+    public interface IPlayerInteractionActions
     {
-        void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IPlayerHoldItemActions
+    {
+        void OnDropItem(InputAction.CallbackContext context);
     }
     public interface IGeneralActions
     {
