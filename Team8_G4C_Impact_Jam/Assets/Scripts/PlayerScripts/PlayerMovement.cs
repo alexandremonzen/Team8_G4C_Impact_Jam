@@ -9,7 +9,7 @@ public sealed class PlayerMovement : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private float _moveSpeed;
 
-    private Rigidbody _rigidbody;
+    private Rigidbody2D _rigidbody;
     private PlayerInputActions _playerInputActions;
     private InputAction _movementAction;
 
@@ -18,7 +18,7 @@ public sealed class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody = GetComponent<Rigidbody2D>();
         _playerInputActions = new PlayerInputActions();
         _movementAction = _playerInputActions.PlayerMovement.Movement;
 
@@ -53,6 +53,6 @@ public sealed class PlayerMovement : MonoBehaviour
 
     private void HandleMovementPhysics()
     {
-        _rigidbody.velocity = new Vector3(_movementVector.x * _moveSpeed, _rigidbody.velocity.y, _movementVector.y * _moveSpeed);
+        _rigidbody.velocity = new Vector3(_movementVector.x * _moveSpeed, _movementVector.y * _moveSpeed, 0);
     }
 }
