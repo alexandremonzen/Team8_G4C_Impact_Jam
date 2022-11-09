@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
   m_Name: Test1
   m_EditorClassIdentifier: 
-  Name: 0
-  Text: Voce pega um peixe pra mim?
+  Name: 1
+  Text: Hi how are you
   Animation:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  AfterOption: 3
+  AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 4965cd392598e4c4d83ce0f1ee8092b0, type: 2}
   ActivateObject: 0

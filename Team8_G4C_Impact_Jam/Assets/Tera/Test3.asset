@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Test3
   m_EditorClassIdentifier: 
   Name: 1
-  Text: Caralho foda demais, brigadao mano, toma essa bola de presente!
+  Text: Thank you sooo much, here is a ball for you in return.
   Animation: []
   AfterOption: 3
   ReplaceDialogue: {fileID: 11400000, guid: daad2129be1bbc34b85640fad7132ff5, type: 2}

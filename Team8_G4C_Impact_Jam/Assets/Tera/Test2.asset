@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
   m_Name: Test2
   m_EditorClassIdentifier: 
-  Name: 1
-  Text: Voce pegou o meu peixe?
+  Name: 0
+  Text: im fine
   Animation: []
   AfterOption: 2
   ReplaceDialogue: {fileID: 11400000, guid: 177be4fb513a2c54a8bb0695c318a2ed, type: 2}

@@ -20,8 +20,9 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI _textUI;
     [SerializeField] private Image _titleImageUI;
     [SerializeField] private Sprite[] _titleImages;
+    [SerializeField] private TMP_FontAsset[] _fonts;
 
-    private bool _isTranslated;
+    [SerializeField] private bool _isTranslated;
     private bool _inDialogue;
     private bool _active;
 
@@ -51,18 +52,24 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
                 case Dialogue.AfterD.EndReplace:
                     _inDialogue = false;
-                    _activeDialogue = _activeDialogue.ReplaceDialogue;
+                    if(_isTranslated)
+                        _activeDialogue = _activeDialogue.ReplaceDialogue;
                     _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
                     playerInteraction.PlayerMovement.ReturnAllMovement();
                     break;
 
                 case Dialogue.AfterD.NextReplace:
-                    _activeDialogue = _activeDialogue.ReplaceDialogue;
-                    StartDialogue();
+                    if (_isTranslated)
+                    {
+                        _activeDialogue = _activeDialogue.ReplaceDialogue;
+                        StartDialogue();
+                    }
+                    else
+                        _inDialogue = false;
                     break;
 
                 case Dialogue.AfterD.NextReplaceIfComplete:
-                    if (playerInteraction.PlayerHoldItem.ActualHoldingItem)
+                    if (playerInteraction.PlayerHoldItem.ActualHoldingItem && _isTranslated)
                     {
                         if (playerInteraction.PlayerHoldItem.ActualHoldingItem.ItemType == _requiredItem)
                         {
@@ -121,14 +128,23 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
             case Dialogue.Character.Player:
                 _titleUI.text = "YOU";
                 _titleImageUI.sprite = _titleImages[0];
+                _textUI.font = _fonts[0];
                 break;
             case Dialogue.Character.Cat:
                 _titleUI.text = _name;
                 _titleImageUI.sprite = _titleImages[1];
+                if (!_isTranslated)
+                    _textUI.font = _fonts[1];
+                else
+                    _textUI.font = _fonts[0];
                 break;
             case Dialogue.Character.Dog:
                 _titleUI.text = _name;
                 _titleImageUI.sprite = _titleImages[2];
+                if (!_isTranslated)
+                    _textUI.font = _fonts[2];
+                else
+                    _textUI.font = _fonts[0];
                 break;
         }
         if (_activeDialogue.ActivateObject)
