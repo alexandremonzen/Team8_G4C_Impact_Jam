@@ -819,29 +819,6 @@ PrefabInstance:
       propertyPath: _itemToSpawn
       value: 
       objectReference: {fileID: 160498340}
-    - target: {fileID: 8419970128750665660, guid: 9ffa5762e3a4230449a0d0904e8107a6,
-        type: 3}
-      propertyPath: _fonts.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8419970128750665660, guid: 9ffa5762e3a4230449a0d0904e8107a6,
-        type: 3}
-      propertyPath: _fonts.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9c978d615d351af46806bc0135b4de67,
-        type: 2}
-    - target: {fileID: 8419970128750665660, guid: 9ffa5762e3a4230449a0d0904e8107a6,
-        type: 3}
-      propertyPath: _fonts.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: f049faa9cd3ac3641a25514cca810b57,
-        type: 2}
-    - target: {fileID: 8419970128750665660, guid: 9ffa5762e3a4230449a0d0904e8107a6,
-        type: 3}
-      propertyPath: _fonts.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7016fd09ea93d0d4d829f7ccfe72d789,
-        type: 2}
     - target: {fileID: 8419970128750665661, guid: 9ffa5762e3a4230449a0d0904e8107a6,
         type: 3}
       propertyPath: m_RootOrder

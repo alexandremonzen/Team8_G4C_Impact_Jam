@@ -65,7 +65,11 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                         StartDialogue();
                     }
                     else
+                    {
                         _inDialogue = false;
+                        _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
+                        playerInteraction.PlayerMovement.ReturnAllMovement();
+                    }
                     break;
 
                 case Dialogue.AfterD.NextReplaceIfComplete:
@@ -126,7 +130,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
         switch (_activeDialogue.Name)
         {
             case Dialogue.Character.Player:
-                _titleUI.text = "YOU";
+                _titleUI.text = "Parrot";
                 _titleImageUI.sprite = _titleImages[0];
                 _textUI.font = _fonts[0];
                 break;
@@ -145,6 +149,16 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                     _textUI.font = _fonts[2];
                 else
                     _textUI.font = _fonts[0];
+                break;
+            case Dialogue.Character.UntranslatedCat:
+                _titleUI.text = _name;
+                _titleImageUI.sprite = _titleImages[1];
+                _textUI.font = _fonts[1];
+                break;
+            case Dialogue.Character.UntranslatedDog:
+                _titleUI.text = _name;
+                _titleImageUI.sprite = _titleImages[2];
+                _textUI.font = _fonts[2];
                 break;
         }
         if (_activeDialogue.ActivateObject)

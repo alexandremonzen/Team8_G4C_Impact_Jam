@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
   m_Name: Townsperson
   m_EditorClassIdentifier: 
-  Name: 1
+  Name: 3
   Text: I don't understand
   Animation: []
-  AfterOption: 0
+  AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 0724bb2b96aee2d4a8d2e7cd3569e2de, type: 2}
   ActivateObject: 0

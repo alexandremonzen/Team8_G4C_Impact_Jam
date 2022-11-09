@@ -1,6 +1,12 @@
 public enum ItemType
 {
     Default,
+    SoccerBall,
+    Catweed,
+    Letter,
+    LuckyPurpleBandana,
     Fish,
-    Meat
+    CatCeviche,
+    LanguageClues,
+    Pickaxes
 }

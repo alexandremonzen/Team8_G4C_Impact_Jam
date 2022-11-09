@@ -10,6 +10,8 @@ public class Dialogue : ScriptableObject
         [Tooltip("Its the player talking")]Player,
         [Tooltip("Its a cat talking")] Cat,
         [Tooltip("Its a dog talking")] Dog,
+        [Tooltip("Its a dog talking")] UntranslatedCat,
+        [Tooltip("Its a dog talking")] UntranslatedDog,
     }
 
     [Header("Dialogue Info")]
