@@ -15,6 +15,8 @@ public sealed class PlayerMovement : MonoBehaviour
 
     private Vector2 _movementVector;
 
+    public Rigidbody2D Rigidbody { get => _rigidbody; }
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();

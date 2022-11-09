@@ -14,11 +14,13 @@ public sealed class PlayerInteraction : MonoBehaviour
     [Header("Player Scripts")]
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerHoldItem _playerHoldItem;
+    [SerializeField] private PlayerLanguageKnowledge _playerLanguageKnowledge;
 
     #region Getters & Setters
     public bool canInteract { get => _canInteract; set => _canInteract = value; }
     public PlayerMovement PlayerMovement { get => _playerMovement; }
     public PlayerHoldItem PlayerHoldItem { get => _playerHoldItem; }
+    public PlayerLanguageKnowledge PlayerLanguageKnowledge { get => _playerLanguageKnowledge; }
     #endregion
 
     private void Awake()
