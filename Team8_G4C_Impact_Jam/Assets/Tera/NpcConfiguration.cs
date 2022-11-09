@@ -11,6 +11,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
     [Header("Quest")]
     [SerializeField] private ItemType _requiredItem;
+    [SerializeField] private LanguageKnowledgeType _languageType;
     [SerializeField] private GameObject _itemToSpawn;
 
     [Header("UI")]
@@ -33,6 +34,8 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteraction playerInteraction)
     {
+        _isTranslated = playerInteraction.PlayerLanguageKnowledge.SearchForLanguageKnowledges(_languageType);
+
         playerInteraction.PlayerMovement.RemoveAllMovement();
         if (!_inDialogue)
         {
@@ -52,7 +55,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
                 case Dialogue.AfterD.EndReplace:
                     _inDialogue = false;
-                    if(_isTranslated)
+                    if (_isTranslated)
                         _activeDialogue = _activeDialogue.ReplaceDialogue;
                     _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
                     playerInteraction.PlayerMovement.ReturnAllMovement();
