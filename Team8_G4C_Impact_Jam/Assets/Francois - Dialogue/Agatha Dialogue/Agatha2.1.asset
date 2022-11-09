@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
-  m_Name: Parrot3
+  m_Name: Agatha2.1
   m_EditorClassIdentifier: 
-  Name: 0
-  Text: This is not working, there must be some other way.
+  Name: 1
+  Text: "We had some kind of falling out, it was so long ago I don\u2019t even remember
+    the reason.\r\n"
   Animation: []
-  AfterOption: 3
-  ReplaceDialogue: {fileID: 11400000, guid: 1737a83402fe159499dd3e82ad24f4c0, type: 2}
-  ActivateObject: 1
+  AfterOption: 1
+  ReplaceDialogue: {fileID: 11400000, guid: 677865545a7aaff4895a985b2712d21e, type: 2}
+  ActivateObject: 0

@@ -5,5 +5,6 @@ public enum LanguageKnowledgeType
     Agatha,
     Pinguica,
     Misty,
-    Nininha
+    Nininha,
+    Stranger
 }

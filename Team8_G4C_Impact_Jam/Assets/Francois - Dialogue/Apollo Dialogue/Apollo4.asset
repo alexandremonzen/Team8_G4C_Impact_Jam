@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Apollo4
   m_EditorClassIdentifier: 
   Name: 1
-  Text: "C\u2019mon auntie.  Grab a pickaxe\r!\n"
+  Text: Thank you again parrot!
   Animation: []
-  AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: e229261608d03ac49a4917f64e2fdbaf, type: 2}
+  AfterOption: 0
+  ReplaceDialogue: {fileID: 0}
   ActivateObject: 0

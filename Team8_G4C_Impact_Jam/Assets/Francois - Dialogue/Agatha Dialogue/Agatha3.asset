@@ -18,4 +18,4 @@ MonoBehaviour:
   Animation: []
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 4195fdaf287b6bd4196b644d01e5876d, type: 2}
-  ActivateObject: 0
+  ActivateObject: 1

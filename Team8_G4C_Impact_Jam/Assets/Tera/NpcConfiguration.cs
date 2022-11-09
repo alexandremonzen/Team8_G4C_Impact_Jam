@@ -6,8 +6,6 @@ using TMPro;
 
 public class NpcConfiguration : MonoBehaviour, IInteractable
 {
-    [Header("NPC Info")]
-    [SerializeField] private string _name;
 
     [Header("Quest")]
     [SerializeField] private ItemType _requiredItem;
@@ -24,6 +22,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     [SerializeField] private TMP_FontAsset[] _fonts;
 
     [SerializeField] private bool _isTranslated;
+    [SerializeField] private bool _CheckTranslation = true;
     private bool _inDialogue;
     private bool _active;
 
@@ -34,7 +33,8 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
     public void Interact(PlayerInteraction playerInteraction)
     {
-        _isTranslated = playerInteraction.PlayerLanguageKnowledge.SearchForLanguageKnowledges(_languageType);
+        if(_CheckTranslation)
+            _isTranslated = playerInteraction.PlayerLanguageKnowledge.SearchForLanguageKnowledges(_languageType);
 
         playerInteraction.PlayerMovement.RemoveAllMovement();
         if (!_inDialogue)
@@ -138,7 +138,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                 _textUI.font = _fonts[0];
                 break;
             case Dialogue.Character.Cat:
-                _titleUI.text = _name;
+                _titleUI.text = _languageType.ToString();
                 _titleImageUI.sprite = _titleImages[1];
                 if (!_isTranslated)
                     _textUI.font = _fonts[1];
@@ -146,7 +146,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                     _textUI.font = _fonts[0];
                 break;
             case Dialogue.Character.Dog:
-                _titleUI.text = _name;
+                _titleUI.text = _languageType.ToString();
                 _titleImageUI.sprite = _titleImages[2];
                 if (!_isTranslated)
                     _textUI.font = _fonts[2];
@@ -154,12 +154,12 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                     _textUI.font = _fonts[0];
                 break;
             case Dialogue.Character.UntranslatedCat:
-                _titleUI.text = _name;
+                _titleUI.text = _languageType.ToString();
                 _titleImageUI.sprite = _titleImages[1];
                 _textUI.font = _fonts[1];
                 break;
             case Dialogue.Character.UntranslatedDog:
-                _titleUI.text = _name;
+                _titleUI.text = _languageType.ToString();
                 _titleImageUI.sprite = _titleImages[2];
                 _textUI.font = _fonts[2];
                 break;

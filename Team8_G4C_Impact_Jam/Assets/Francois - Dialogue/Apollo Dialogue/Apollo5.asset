@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
-  m_Name: Parrot3
+  m_Name: Apollo5
   m_EditorClassIdentifier: 
-  Name: 0
-  Text: This is not working, there must be some other way.
+  Name: 1
+  Text: "C\u2019mon auntie.  Grab a pickaxe\r!\n"
   Animation: []
-  AfterOption: 3
-  ReplaceDialogue: {fileID: 11400000, guid: 1737a83402fe159499dd3e82ad24f4c0, type: 2}
-  ActivateObject: 1
+  AfterOption: 1
+  ReplaceDialogue: {fileID: 11400000, guid: e229261608d03ac49a4917f64e2fdbaf, type: 2}
+  ActivateObject: 0

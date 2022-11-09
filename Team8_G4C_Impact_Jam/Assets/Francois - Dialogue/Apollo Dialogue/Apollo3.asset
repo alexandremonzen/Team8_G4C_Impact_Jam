@@ -16,6 +16,6 @@ MonoBehaviour:
   Text: "You got it back? You\u2019re awesome! See, auntie? That\u2019s the person
     I was telling you about."
   Animation: []
-  AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: 9106d54009dc25c479e8f0a2ae6fddfc, type: 2}
-  ActivateObject: 0
+  AfterOption: 3
+  ReplaceDialogue: {fileID: 11400000, guid: 0e0f97d2037d6934099d486dbcb75439, type: 2}
+  ActivateObject: 1

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 17
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -534,8 +534,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3794e090ed214a044b907373ae026b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: APOLLO
   _requiredItem: 1
+  _languageType: 0
   _itemToSpawn: {fileID: 0}
   _activeDialogue: {fileID: 11400000, guid: ef48384067d24aa4fa72c436aff66ebf, type: 2}
   _dialogueUI: {fileID: 364983966886430860}
@@ -551,6 +551,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f049faa9cd3ac3641a25514cca810b57, type: 2}
   - {fileID: 11400000, guid: 7016fd09ea93d0d4d829f7ccfe72d789, type: 2}
   _isTranslated: 0
+  _CheckTranslation: 1
 --- !u!61 &1463662929
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -16,7 +16,8 @@ public sealed class MagnifyingGlassController : Singleton<MagnifyingGlassControl
 
     public bool IsUsingMagnifyingGlass { get => _isUsingMagnifyingGlass; }
 
-    private void Awake()
+
+    private void OnEnable()
     {
         _isUsingMagnifyingGlass = false;
     }

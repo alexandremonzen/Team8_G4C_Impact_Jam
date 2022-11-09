@@ -14,9 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 1
   Text: "It wasn\u2019t always this way. Before the barrier, both cats and dogs lived
-    together in this town. But now\u2026 It\u2019s not the same. We had some kind
-    of falling out, it was so long ago I don\u2019t even remember the reason.\r\n"
+    together in this town. But now\u2026 It\u2019s not the same."
   Animation: []
   AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: 677865545a7aaff4895a985b2712d21e, type: 2}
+  ReplaceDialogue: {fileID: 11400000, guid: 9bca1357c611e144681c397d9ed0e602, type: 2}
   ActivateObject: 0
