@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b597813fa6ea914aba4860c9930623f, type: 3}
+  m_Name: Parrot5
+  m_EditorClassIdentifier: 
+  Name: 0
+  Text: "Is that all? It shouldn\u2019t be too hard. I\u2019ll get the ball for you.
+    \r\n"
+  Animation: []
+  AfterOption: 2
+  ReplaceDialogue: {fileID: 11400000, guid: 1aa846fa4a6512e4799791d8177f9c8b, type: 2}
+  ActivateObject: 0
