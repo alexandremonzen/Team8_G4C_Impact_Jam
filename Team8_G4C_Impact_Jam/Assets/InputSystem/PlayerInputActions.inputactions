@@ -74,13 +74,13 @@
             ]
         },
         {
-            "name": "PlayerJump",
-            "id": "c6f20d09-a8ae-4f08-93d8-88b98f93593e",
+            "name": "PlayerInteraction",
+            "id": "69f0bd0f-761b-4aad-8ec5-739e81626500",
             "actions": [
                 {
-                    "name": "Jump",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "79e8cb5a-ca14-44e8-bcee-dc4caba5dc47",
+                    "id": "9bfa37d2-cbed-4a3b-a7bb-71711165f5f4",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -90,12 +90,40 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "cb686191-d268-44b0-892b-32fac9db8891",
-                    "path": "<Keyboard>/space",
+                    "id": "42237183-4199-4afd-a352-7bb1fdbbf226",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Jump",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerHoldItem",
+            "id": "8b4b67d2-2495-43ec-8f24-58347277130a",
+            "actions": [
+                {
+                    "name": "DropItem",
+                    "type": "Button",
+                    "id": "66222c67-45ce-432a-93b4-54c389c373b6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5ad4eb5c-f2b9-4ec8-bf72-ceaaf68e4c70",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DropItem",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
