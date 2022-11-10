@@ -377,9 +377,14 @@ public class Cs_FishingGame_Mara : MonoBehaviour
       player = pl;
       gameStarted = true;
       player.transform.position = gameObject.transform.position + new Vector3(playerRelativePosition.x, playerRelativePosition.y, 0.0f);
-      Debug.Log("Game Started");
-
       Restart();
+      var plMov = player.GetComponent<PlayerMovement>();
+      if (null != plMov)
+      {
+        plMov.enabled = false;
+      }
+
+      Debug.Log("Game Started");
     }
   }
 
@@ -387,8 +392,14 @@ public class Cs_FishingGame_Mara : MonoBehaviour
   {
     if (gameStarted)
     {
-      player = null;
       gameStarted = false;
+      var plMov = player.GetComponent<PlayerMovement>();
+      if (null != plMov)
+      {
+        plMov.enabled = true;
+      }
+      player = null;
+
       Debug.Log("Game Stoped");
     }
   }
