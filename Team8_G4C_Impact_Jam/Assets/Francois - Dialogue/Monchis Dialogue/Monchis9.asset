@@ -20,3 +20,6 @@ MonoBehaviour:
   AfterOption: 0
   ReplaceDialogue: {fileID: 0}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 1

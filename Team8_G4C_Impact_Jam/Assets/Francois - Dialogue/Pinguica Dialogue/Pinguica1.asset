@@ -16,6 +16,7 @@ MonoBehaviour:
   Text: "Who\u2019s there? Oh my, aren\u2019t you strange looking. What can I do
     for you?\r\n"
   Animation: []
-  AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: 6a4a2b67e9453284eb6cc23b7f81184e, type: 2}
+  AfterOption: 2
+  ReplaceDialogue: {fileID: 11400000, guid: 954b3238f3ea50c49adf2d4cd35ceb63, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0

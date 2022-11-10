@@ -15,6 +15,9 @@ MonoBehaviour:
   Name: 2
   Text: " I can\u2019t wait to see Meow\u2019s Bay, after all those years!"
   Animation: []
-  AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: c34174dd70bf70e4dabaa60f6441b5ab, type: 2}
+  AfterOption: 0
+  ReplaceDialogue: {fileID: 0}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

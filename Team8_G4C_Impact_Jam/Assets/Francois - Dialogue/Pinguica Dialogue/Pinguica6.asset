@@ -15,6 +15,9 @@ MonoBehaviour:
   Name: 2
   Text: "What is all that noise? Looks like it\u2019s coming from the town square.\r\n"
   Animation: []
-  AfterOption: 0
-  ReplaceDialogue: {fileID: 0}
+  AfterOption: 3
+  ReplaceDialogue: {fileID: 11400000}
   ActivateObject: 0
+  HasItemToGive: 1
+  ChangeNPC: 0
+  GiveSpecialItem: 0

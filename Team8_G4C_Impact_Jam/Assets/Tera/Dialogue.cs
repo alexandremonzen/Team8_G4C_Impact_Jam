@@ -16,7 +16,7 @@ public class Dialogue : ScriptableObject
 
     [Header("Dialogue Info")]
     [Tooltip("Who is talking")]public Character Name;
-    [Tooltip("Text of the dialogue")][TextArea]public string Text;
+    [Tooltip("Text of the dialogue")][TextArea()]public string Text;
     [Tooltip("Visual representation of the text(type of gif, frame by frame)")] public Sprite[] Animation;
 
     public enum AfterD
@@ -30,4 +30,7 @@ public class Dialogue : ScriptableObject
     [Tooltip("What happens when you finish this dialogue")]public AfterD AfterOption;
     [Tooltip("Replace dialogue file if you have one")] public Dialogue ReplaceDialogue;
     [Tooltip("Make the object that the npc is holding appear on the map")]public bool ActivateObject;
+    public bool HasItemToGive;
+    public bool ChangeNPC;
+    [Tooltip("Item that it is not physical")] public bool GiveSpecialItem;
 }
