@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cs_InteractiveHolder_Mara : Cs_InteractiveObject_Mara
+public class Cs_InteractPipe_Mara : Cs_InteractiveObject_Mara
 {
+  public Cs_InteractPipe_Mara otherEnd;
+
   public Sprite closedSprite;
   public Sprite openedSprite;
 
   public SpriteRenderer spriteRenderer;
 
   public bool opened = false;
-  public bool canClose = false;
 
   void Start()
   {
@@ -22,14 +23,20 @@ public class Cs_InteractiveHolder_Mara : Cs_InteractiveObject_Mara
 
   protected override void Interacted(GameObject pl)
   {
-    if (!opened || canClose)
+    if (!opened)
     {
-      opened = !opened;
+      opened = true;
+      if (null != spriteRenderer)
+      {
+        spriteRenderer.sprite = openedSprite;
+      }
+      return;
     }
 
-    if (null != spriteRenderer)
+    if (otherEnd.opened && null != pl)
     {
-      spriteRenderer.sprite = opened ? openedSprite : closedSprite;
+      pl.transform.position = otherEnd.transform.position;
     }
+
   }
 }

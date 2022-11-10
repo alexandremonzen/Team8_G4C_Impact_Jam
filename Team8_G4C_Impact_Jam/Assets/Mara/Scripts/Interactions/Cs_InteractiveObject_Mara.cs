@@ -4,38 +4,43 @@ using UnityEngine;
 
 public class Cs_InteractiveObject_Mara : MonoBehaviour
 {
-    protected GameObject player;
-    protected bool isColliding;
+  protected GameObject player;
+  protected bool isColliding;
 
-    public bool debugUpdate = false;
+  public bool debugUpdate = false;
 
-    void Update()
+  protected virtual void Update()
+  {
+    if (Input.GetButtonDown("Interact"))
     {
-        if (Input.GetButtonDown("Interact"))
-        {
-            if (isColliding)
-            {
-                Interacted(player);
-            }
-        }
+      if (isColliding)
+      {
+        Interacted(player);
+      }
     }
 
-    protected virtual void Interacted(GameObject pl) {}
+    if (debugUpdate)
+    {
+      Debug.Log("Parent Update");
+    }
+  }
 
-    void OnTriggerEnter2D(Collider2D other)
+  protected virtual void Interacted(GameObject pl) { }
+
+  void OnTriggerEnter2D(Collider2D other)
+  {
+    if (other.tag == "Player")
     {
-        if (other.tag == "Player")
-        {
-            player = other.gameObject;
-            isColliding = true;
-        }
+      player = other.gameObject;
+      isColliding = true;
     }
-    void OnTriggerExit2D(Collider2D other)
+  }
+  void OnTriggerExit2D(Collider2D other)
+  {
+    if (other.tag == "Player" && other.gameObject == player)
     {
-        if (other.tag == "Player" && other.gameObject == player)
-        {
-            player = null;
-            isColliding = false;
-        }
+      player = null;
+      isColliding = false;
     }
+  }
 }

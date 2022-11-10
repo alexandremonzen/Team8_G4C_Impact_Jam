@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Cs_InteractFishingGame_Mara : MonoBehaviour
+public class Cs_InteractFishingGame_Mara : Cs_InteractiveObject_Mara
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+  public Cs_FishingGame_Mara game;
 
-    // Update is called once per frame
-    void Update()
+  protected override void Interacted(GameObject pl)
+  {
+    if (null != game)
     {
-        
+      if (game.GameIsStarted()) game.StopGame();
+      else game.StartGame(pl);
     }
+  }
 }
