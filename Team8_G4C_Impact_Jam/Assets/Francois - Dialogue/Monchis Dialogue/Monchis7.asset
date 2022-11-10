@@ -15,6 +15,9 @@ MonoBehaviour:
   Name: 2
   Text: 'What is it this time? '
   Animation: []
-  AfterOption: 1
+  AfterOption: 2
   ReplaceDialogue: {fileID: 11400000, guid: 87e507a80f1067745bec0438d3f0c983, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

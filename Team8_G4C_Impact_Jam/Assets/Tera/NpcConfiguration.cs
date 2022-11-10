@@ -11,6 +11,8 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     [SerializeField] private ItemType _requiredItem;
     [SerializeField] private LanguageKnowledgeType _languageType;
     [SerializeField] private GameObject _itemToSpawn;
+    [SerializeField] private GameObject _itemToGive;
+    private bool _itemGiven;
 
     [Header("UI")]
     [SerializeField] private Dialogue _activeDialogue;
@@ -20,20 +22,41 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     [SerializeField] private Image _titleImageUI;
     [SerializeField] private Sprite[] _titleImages;
     [SerializeField] private TMP_FontAsset[] _fonts;
+    [SerializeField] private float _timeToDeactivate = 0;
 
+    [Header("Translate")]
     [SerializeField] private bool _isTranslated;
     [SerializeField] private bool _CheckTranslation = true;
+
+    [Header("Change NPC")]
+    [SerializeField] private GameObject _oldNPC;
+    [SerializeField] private GameObject _newNPC;
+
     private bool _inDialogue;
     private bool _active;
+    private PlayerHoldItem _actualPlayerHoldItem;
 
     private void Awake()
     {
         _inDialogue = false;
+        _itemGiven = false;
+    }
+
+    private void OnEnable()
+    {
+        
+    }
+
+    private void SelfDeactive()
+    {
+        _dialogueUI.SetActive(false);
     }
 
     public void Interact(PlayerInteraction playerInteraction)
     {
-        if(_CheckTranslation)
+        _actualPlayerHoldItem = playerInteraction.PlayerHoldItem;
+
+        if (_CheckTranslation)
             _isTranslated = playerInteraction.PlayerLanguageKnowledge.SearchForLanguageKnowledges(_languageType);
 
         playerInteraction.PlayerMovement.RemoveAllMovement();
@@ -76,7 +99,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                     break;
 
                 case Dialogue.AfterD.NextReplaceIfComplete:
-                    if (playerInteraction.PlayerHoldItem.ActualHoldingItem && _isTranslated)
+                    if ((playerInteraction.PlayerHoldItem.ActualHoldingItem && _isTranslated))
                     {
                         if (playerInteraction.PlayerHoldItem.ActualHoldingItem.ItemType == _requiredItem)
                         {
@@ -128,6 +151,11 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
     public void StartDialogue()
     {
+        if(_timeToDeactivate > 0)
+        {
+            Invoke("SelfDeactive", _timeToDeactivate);
+        }
+        
         _inDialogue = true;
         _dialogueUI.GetComponent<Animator>().SetBool("Active", _inDialogue);
         switch (_activeDialogue.Name)
@@ -164,8 +192,29 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
                 _textUI.font = _fonts[2];
                 break;
         }
+
         if (_activeDialogue.ActivateObject)
             _itemToSpawn.SetActive(true);
+
+        if (_activeDialogue.HasItemToGive)
+        {
+            if (!_itemGiven)
+            {
+                _itemToGive.SetActive(true);
+                _itemGiven = true;
+            }
+        }
+
+        if(_activeDialogue.ChangeNPC)
+        {
+            _oldNPC.SetActive(false);
+            _newNPC.SetActive(true);
+        }
+
+        if(_activeDialogue.GiveSpecialItem)
+        {
+            _actualPlayerHoldItem.HasDeliveredCatCeviche = true;
+        }
 
         StartCoroutine(TypeSentence(_activeDialogue.Text));
     }

@@ -17,4 +17,7 @@ MonoBehaviour:
   Animation: []
   AfterOption: 0
   ReplaceDialogue: {fileID: 0}
-  ActivateObject: 0
+  ActivateObject: 1
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

@@ -18,3 +18,6 @@ MonoBehaviour:
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 34bb16a740d898d4eb4c637d2dcdc161, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

@@ -15,6 +15,9 @@ MonoBehaviour:
   Name: 2
   Text: "What are you waiting for? Let\u2019s break this thing!"
   Animation: []
-  AfterOption: 1
-  ReplaceDialogue: {fileID: 11400000, guid: 09bb60e23f032e440b01c5f50d5aaa09, type: 2}
+  AfterOption: 0
+  ReplaceDialogue: {fileID: 0}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

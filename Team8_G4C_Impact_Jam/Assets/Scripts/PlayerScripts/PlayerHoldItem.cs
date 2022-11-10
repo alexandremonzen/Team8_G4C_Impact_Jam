@@ -12,11 +12,16 @@ public sealed class PlayerHoldItem : MonoBehaviour
 
     private PlayerInputActions _playerInputActions;
 
+    public bool HasDeliveredCatCeviche = false;
+
+    #region Getters & Setters
     public Item ActualHoldingItem { get => _actualHoldingItem; }
+    #endregion
 
     private void Awake()
     {
         _playerInputActions = new PlayerInputActions();
+        HasDeliveredCatCeviche = false;
     }
 
     private void OnEnable()

@@ -7,7 +7,7 @@ public sealed class LanguageKnowledgeObj : MonoBehaviour
     [SerializeField] private LanguageKnowledgeType _languageKnowledgeType;
     private MagnifyingGlassController _magnifyingGlassController;
 
-    private void Update()
+    private void Awake()
     {
         _magnifyingGlassController = MagnifyingGlassController.Instance;
     }

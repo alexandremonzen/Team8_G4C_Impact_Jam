@@ -8,5 +8,6 @@ public enum ItemType
     Fish,
     CatCeviche,
     LanguageClues,
-    Pickaxes
+    Pickaxes,
+    DeliveredCatCevicheToMonchis
 }
