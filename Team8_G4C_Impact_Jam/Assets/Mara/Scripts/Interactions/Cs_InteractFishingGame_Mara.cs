@@ -10,8 +10,22 @@ public class Cs_InteractFishingGame_Mara : Cs_InteractiveObject_Mara
   {
     if (null != game)
     {
-      if (game.GameIsStarted()) game.StopGame();
-      else game.StartGame(pl);
+      if (game.GameIsStarted())
+      {
+        if (null != interactButtonIcon)
+        {
+          interactButtonIcon.enabled = true;
+        }
+        game.StopGame();
+      }
+      else
+      {
+        if (null != interactButtonIcon)
+        {
+          interactButtonIcon.enabled = false;
+        }
+        game.StartGame(pl);
+      }
     }
   }
 }

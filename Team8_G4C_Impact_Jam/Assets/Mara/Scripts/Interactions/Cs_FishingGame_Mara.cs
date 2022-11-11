@@ -11,7 +11,7 @@ public class Cs_FishingGame_Mara : MonoBehaviour
   public GameObject ropeObj = null;
 
   public GameObject exclamationMark = null;
-  public GameObject pushButtonIcon = null;
+  public SpriteRenderer pushButtonIcon = null;
   bool pushButtonActive = false;
   float pushButtonTime = 0.0f;
   public GameObject progressBar = null;
@@ -71,11 +71,7 @@ public class Cs_FishingGame_Mara : MonoBehaviour
         pushButtonTime -= 0.2f;
         if (null != pushButtonIcon)
         {
-          SpriteRenderer pushButtonSprite = pushButtonIcon.GetComponent<SpriteRenderer>();
-          if (null != pushButtonSprite)
-          {
-            pushButtonSprite.enabled = !pushButtonSprite.enabled;
-          }
+          pushButtonIcon.enabled = !pushButtonIcon.enabled;
         }
       }
     }
@@ -83,11 +79,7 @@ public class Cs_FishingGame_Mara : MonoBehaviour
     {
       if (null != pushButtonIcon)
       {
-        SpriteRenderer pushButtonSprite = pushButtonIcon.GetComponent<SpriteRenderer>();
-        if (null != pushButtonSprite)
-        {
-          pushButtonSprite.enabled = false;
-        }
+        pushButtonIcon.enabled = false;
       }
     }
 
