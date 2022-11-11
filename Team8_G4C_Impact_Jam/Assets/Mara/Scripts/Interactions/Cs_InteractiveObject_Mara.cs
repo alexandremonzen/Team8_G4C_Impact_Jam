@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cs_InteractiveObject_Mara : MonoBehaviour
 {
+  public SpriteRenderer interactButtonIcon = null;
+
   protected GameObject player;
   protected bool isColliding;
 
@@ -11,6 +13,11 @@ public class Cs_InteractiveObject_Mara : MonoBehaviour
 
   protected virtual void Update()
   {
+    if (null != player && null != interactButtonIcon)
+    {
+      interactButtonIcon.transform.position = player.transform.position + new Vector3(0.0f, 2.25f, 0.0f);
+    }
+
     if (Input.GetButtonDown("Interact"))
     {
       if (isColliding)
@@ -33,6 +40,12 @@ public class Cs_InteractiveObject_Mara : MonoBehaviour
     {
       player = other.gameObject;
       isColliding = true;
+
+      if (null != interactButtonIcon)
+      {
+        interactButtonIcon.enabled = true;
+        interactButtonIcon.transform.position = player.transform.position + new Vector3(0.0f, 2.25f, 0.0f);
+      }
     }
   }
   void OnTriggerExit2D(Collider2D other)
@@ -41,6 +54,11 @@ public class Cs_InteractiveObject_Mara : MonoBehaviour
     {
       player = null;
       isColliding = false;
+
+      if (null != interactButtonIcon)
+      {
+        interactButtonIcon.enabled = false;
+      }
     }
   }
 }

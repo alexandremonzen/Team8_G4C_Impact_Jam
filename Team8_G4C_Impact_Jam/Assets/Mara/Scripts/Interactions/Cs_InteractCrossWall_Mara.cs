@@ -8,6 +8,7 @@ public class Cs_InteractCrossWall_Mara : Cs_InteractiveObject_Mara
   
   public float speed = 10.0f;
   public float archRad = 2.0f;
+  float realArchRad = 0.0f;
 
   Vector3 center = new Vector3(0.0f, 0.0f, 0.0f);
   float startAngle = 0.0f;
@@ -31,8 +32,8 @@ public class Cs_InteractCrossWall_Mara : Cs_InteractiveObject_Mara
 
     center = endPos + thisPos;
     center *= 0.5f;
-    float downRad = Mathf.Sqrt(archRad * archRad - dist * dist);
-    center += norm * downRad;
+    center += norm * archRad;
+    realArchRad = Mathf.Sqrt(archRad * archRad + dist * dist);
 
     Vector3 startDir = thisPos - center;
     startAngle = Mathf.Atan2(startDir.y, startDir.x);
@@ -40,7 +41,7 @@ public class Cs_InteractCrossWall_Mara : Cs_InteractiveObject_Mara
     endAngle = Mathf.Atan2(endDir.y, endDir.x);
 
     angleDist = endAngle - startAngle;
-    progressSpeed = speed / Mathf.Abs(angleDist * archRad);
+    progressSpeed = speed / Mathf.Abs(angleDist * realArchRad);
   }
 
   void FixedUpdate()
@@ -50,7 +51,7 @@ public class Cs_InteractCrossWall_Mara : Cs_InteractiveObject_Mara
       progress += progressSpeed * Time.fixedDeltaTime;
       //crossingPlayer.transform.position = transform.position + dir * dist * progress;
       float currentAngle = startAngle + angleDist * progress;
-      crossingPlayer.transform.position = center + new Vector3(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle), 0.0f) * archRad;
+      crossingPlayer.transform.position = center + new Vector3(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle), 0.0f) * realArchRad;
 
       Debug.Log(progress);
 
