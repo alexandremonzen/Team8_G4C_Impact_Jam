@@ -1237,6 +1237,7 @@ GameObject:
   - component: {fileID: 1190400731}
   - component: {fileID: 1190400733}
   - component: {fileID: 1190400734}
+  - component: {fileID: 1190400735}
   m_Layer: 5
   m_Name: credits
   m_TagString: Untagged
@@ -1355,16 +1356,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 340281805}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1190400735}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: TrocarScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Credits
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!82 &1190400734
@@ -1463,6 +1464,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1190400735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1190400729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48016d7f3493ff84c810cfe27ca53311, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level: 
+  ChangeByCollision: 0
 --- !u!1 &1235501853
 GameObject:
   m_ObjectHideFlags: 0
