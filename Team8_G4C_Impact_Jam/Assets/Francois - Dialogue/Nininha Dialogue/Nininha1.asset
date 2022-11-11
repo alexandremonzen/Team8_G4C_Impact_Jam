@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Nininha1
   m_EditorClassIdentifier: 
   Name: 2
-  Text: 'Yummy, what is that smell? '
+  Text: 'What is that smell? It smells so much better than this gross sewage!
+
+'
   Animation: []
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 34bb16a740d898d4eb4c637d2dcdc161, type: 2}

@@ -174,7 +174,7 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     public void StartDialogue()
     {
         _textUI.enabled = false;
-        _ImageText.enabled = true;
+        if(_ImageText) _ImageText.enabled = true;
         if (_timeToDeactivate > 0)
         {
             Invoke("SelfDeactive", _timeToDeactivate);

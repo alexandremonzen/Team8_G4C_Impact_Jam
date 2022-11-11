@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 1
   Text: Thank you again parrot!
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 194befbfd0b4ef349b65a2929acea5b8, type: 3}
   AfterOption: 0
   ReplaceDialogue: {fileID: 0}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

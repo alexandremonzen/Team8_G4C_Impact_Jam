@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nininha0
   m_EditorClassIdentifier: 
   Name: 2
-  Text: Heyy, what's up?
+  Text: 'Heyy, what''s up? '
   Animation: []
   AfterOption: 2
   ReplaceDialogue: {fileID: 11400000, guid: 3682eecdbee6f1442b4b522aa2edd67f, type: 2}

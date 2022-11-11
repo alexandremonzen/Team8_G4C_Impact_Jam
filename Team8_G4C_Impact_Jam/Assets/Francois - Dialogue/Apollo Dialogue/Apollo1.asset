@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 1
   Text: "It\u2019s not fair! Stupid wall!"
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 46d875c53c484f84e947716aafee3295, type: 3}
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: a81836ecd21367f49a1aa53b02114b2c, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

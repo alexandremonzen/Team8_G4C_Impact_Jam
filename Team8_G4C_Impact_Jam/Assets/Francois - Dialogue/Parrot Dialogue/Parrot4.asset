@@ -14,7 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 0
   Text: You look upset. Is there something wrong?
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 385a388f8f05fe842988247f4c3251c6, type: 3}
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: 6d99a17411b956747a39b1a7454d5d28, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0
