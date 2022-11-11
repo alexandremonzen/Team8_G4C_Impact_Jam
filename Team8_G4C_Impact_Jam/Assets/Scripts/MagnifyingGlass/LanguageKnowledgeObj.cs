@@ -33,6 +33,7 @@ public sealed class LanguageKnowledgeObj : MonoBehaviour
         if (_magnifyingGlassController.IsUsingMagnifyingGlass)
         {
             _magnifyingGlassController.AddKnowledgmentType(_languageKnowledgeType);
+            _magnifyingGlassController.ChangeStatusMagnifyingGlass();
         }
     }
 }

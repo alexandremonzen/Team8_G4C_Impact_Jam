@@ -11,6 +11,7 @@ public sealed class MagnifyingGlassController : Singleton<MagnifyingGlassControl
     [SerializeField] private Texture2D _defaultCursor;
     [SerializeField] private Texture2D _normalMagnifyingGlassCursor;
     [SerializeField] private Texture2D _feedbackMagnifyingGlassCursor;
+    [SerializeField] private GameObject _textToActive;
 
     private bool _isUsingMagnifyingGlass;
 
@@ -47,5 +48,7 @@ public sealed class MagnifyingGlassController : Singleton<MagnifyingGlassControl
     public void AddKnowledgmentType(LanguageKnowledgeType newKnowdlege)
     {
         _playerLanguageKnowledge.AddKnowledgmentType(newKnowdlege);
+        _textToActive.SetActive(false);
+        _textToActive.SetActive(true);
     }
 }
