@@ -189,6 +189,7 @@ MonoBehaviour:
   _isText: 0
   _oldNPC: {fileID: 0}
   _newNPC: {fileID: 0}
+  NpcSprite: {fileID: 6520818147184340568}
 --- !u!61 &1548620779907892799
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 2
   Text: "Would you mind doing me a little favor? I dropped my lucky purple bandana
-    in the sewers. It\u2019s probably in Meow\u2019s Bay at the moment. Since you\u2019re
-    heading back there anyways, can you go and get it for me? \r\n"
+    when I was taking a walk on the beach. Its probably drifted out to Meow\u2019s
+    Bay by now. Since you\u2019re heading back there anyways, can you go and get
+    it for me? \r\n"
   Animation: []
   AfterOption: 1
   ReplaceDialogue: {fileID: 11400000, guid: c7fae8a19f852704e9117f1ea57e4c23, type: 2}

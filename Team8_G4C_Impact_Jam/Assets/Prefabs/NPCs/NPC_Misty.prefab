@@ -68,6 +68,7 @@ MonoBehaviour:
   _CheckTranslation: 1
   _oldNPC: {fileID: 0}
   _newNPC: {fileID: 0}
+  NpcSprite: {fileID: 209528975117950253}
 --- !u!61 &6076513368979973396
 BoxCollider2D:
   m_ObjectHideFlags: 0
