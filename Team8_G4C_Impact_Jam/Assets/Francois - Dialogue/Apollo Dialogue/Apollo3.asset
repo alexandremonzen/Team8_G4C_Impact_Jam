@@ -15,7 +15,11 @@ MonoBehaviour:
   Name: 1
   Text: "You got it back? You\u2019re awesome! See, auntie? That\u2019s the person
     I was telling you about."
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 46d875c53c484f84e947716aafee3295, type: 3}
   AfterOption: 3
   ReplaceDialogue: {fileID: 11400000, guid: 0e0f97d2037d6934099d486dbcb75439, type: 2}
   ActivateObject: 1
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0

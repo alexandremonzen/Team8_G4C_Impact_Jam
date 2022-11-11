@@ -15,7 +15,11 @@ MonoBehaviour:
   Name: 0
   Text: "Is that all? It shouldn\u2019t be too hard. I\u2019ll get the ball for you.
     \r\n"
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 385a388f8f05fe842988247f4c3251c6, type: 3}
   AfterOption: 2
   ReplaceDialogue: {fileID: 11400000, guid: 1aa846fa4a6512e4799791d8177f9c8b, type: 2}
   ActivateObject: 0
+  HasItemToGive: 0
+  ChangeNPC: 0
+  GiveSpecialItem: 0
