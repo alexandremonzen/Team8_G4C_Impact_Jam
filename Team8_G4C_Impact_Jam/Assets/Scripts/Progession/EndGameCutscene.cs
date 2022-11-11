@@ -66,7 +66,7 @@ public sealed class EndGameCutscene : MonoBehaviour
         _audioManager.PlayAudio2D(_wallDestroyClip);
         yield return new WaitForSeconds(8f);
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
 
         yield return null;
     }
