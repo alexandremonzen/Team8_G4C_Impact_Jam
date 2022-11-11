@@ -20,13 +20,17 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     [SerializeField] private TextMeshProUGUI _titleUI;
     [SerializeField] private TextMeshProUGUI _textUI;
     [SerializeField] private Image _titleImageUI;
+    [SerializeField] private Image _ImageText;
     [SerializeField] private Sprite[] _titleImages;
     [SerializeField] private TMP_FontAsset[] _fonts;
     [SerializeField] private float _timeToDeactivate = 0;
+    [SerializeField] private Sprite[] _animation;
+    [SerializeField] private bool AnimationActive;
 
     [Header("Translate")]
     [SerializeField] private bool _isTranslated;
     [SerializeField] private bool _CheckTranslation = true;
+    [SerializeField] private bool _isText = true;
 
     [Header("Change NPC")]
     [SerializeField] private GameObject _oldNPC;
@@ -50,6 +54,12 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     private void SelfDeactive()
     {
         _dialogueUI.SetActive(false);
+    }
+
+    public void Update()
+    {
+        if(!AnimationActive && _animation.Length != 0)
+            AnimationPlayer(_animation);
     }
 
     public void Interact(PlayerInteraction playerInteraction)
@@ -134,6 +144,18 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
         }
     }
 
+    private IEnumerator AnimationPlayer(Sprite[] anim)
+    {
+        AnimationActive = true;
+        for (int i = 1; i < anim.Length; ++i)
+        {
+            yield return new WaitForSecondsRealtime(0.75f);
+            _ImageText.sprite = anim[i];
+            yield return null;
+        }
+        AnimationActive = false;
+        yield return null;
+    }
     private IEnumerator TypeSentence(string sentence)
     {
         _active = true;
@@ -151,7 +173,9 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
 
     public void StartDialogue()
     {
-        if(_timeToDeactivate > 0)
+        _textUI.enabled = false;
+        _ImageText.enabled = true;
+        if (_timeToDeactivate > 0)
         {
             Invoke("SelfDeactive", _timeToDeactivate);
         }
@@ -216,6 +240,16 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
             _actualPlayerHoldItem.HasDeliveredCatCeviche = true;
         }
 
-        StartCoroutine(TypeSentence(_activeDialogue.Text));
+        if (_isText == true || _activeDialogue.Name == Dialogue.Character.UntranslatedCat || _activeDialogue.Name == Dialogue.Character.UntranslatedDog || !_isTranslated)
+        {
+            _textUI.enabled = true;
+            _ImageText.enabled = false;
+            StartCoroutine(TypeSentence(_activeDialogue.Text));
+        }
+        else
+        {
+            _ImageText.sprite = _activeDialogue.Animation[0];
+            _animation = _activeDialogue.Animation;
+        }
     }
 }

@@ -135,11 +135,13 @@ MonoBehaviour:
   _requiredItem: 1
   _languageType: 0
   _itemToSpawn: {fileID: 0}
+  _itemToGive: {fileID: 0}
   _activeDialogue: {fileID: 11400000, guid: 0fcd057b7e253e54ab0850c8a215f4b9, type: 2}
   _dialogueUI: {fileID: 3316151805495765966}
   _titleUI: {fileID: 3104660767439674951}
   _textUI: {fileID: 6902970103171263898}
   _titleImageUI: {fileID: 3104660766115195263}
+  _ImageText: {fileID: 7304878659334929794}
   _titleImages:
   - {fileID: 21300000, guid: 5d90f9f62118d56429c9513ce5b1dbcc, type: 3}
   - {fileID: 21300000, guid: 874d8de9ac3ee464d95f1ba57c98f844, type: 3}
@@ -148,8 +150,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9c978d615d351af46806bc0135b4de67, type: 2}
   - {fileID: 11400000, guid: f049faa9cd3ac3641a25514cca810b57, type: 2}
   - {fileID: 11400000, guid: 7016fd09ea93d0d4d829f7ccfe72d789, type: 2}
+  _timeToDeactivate: 0
+  _animation: []
+  AnimationActive: 0
   _isTranslated: 0
   _CheckTranslation: 1
+  _isText: 0
+  _oldNPC: {fileID: 0}
+  _newNPC: {fileID: 0}
 --- !u!61 &1548620779907892799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -285,6 +293,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7304878659334929794 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 660751615, guid: 553c41d8cbb2d8147b312039e80cd73b,
+    type: 3}
+  m_PrefabInstance: {fileID: 7304878659983063421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8950991535073226348 stripped

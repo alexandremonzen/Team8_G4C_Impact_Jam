@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 1
   Text: "C\u2019mon auntie.  Grab a pickaxe\r!\n"
-  Animation: []
+  Animation:
+  - {fileID: 21300000, guid: 385a388f8f05fe842988247f4c3251c6, type: 3}
   AfterOption: 0
   ReplaceDialogue: {fileID: 0}
   ActivateObject: 0
