@@ -29,6 +29,7 @@ public class NpcConfigurationMisty : MonoBehaviour, IInteractable
     [Header("Change NPC")]
     [SerializeField] private GameObject _oldNPC;
     [SerializeField] private GameObject _newNPC;
+    public SpriteRenderer NpcSprite;
 
     private bool _inDialogue;
     private bool _active;
@@ -39,6 +40,13 @@ public class NpcConfigurationMisty : MonoBehaviour, IInteractable
         _itemGiven = false;
     }
 
+    public void Update()
+    {
+        if (GameObject.FindWithTag("Player").transform.position.y > transform.position.y - 0.2f)
+            NpcSprite.sortingOrder = 21;
+        else
+            NpcSprite.sortingOrder = 0;
+    }
     public void Interact(PlayerInteraction playerInteraction)
     {
         if (_CheckTranslation)

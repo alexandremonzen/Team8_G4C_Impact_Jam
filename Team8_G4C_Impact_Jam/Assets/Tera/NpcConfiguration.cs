@@ -40,6 +40,8 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     private bool _active;
     private PlayerHoldItem _actualPlayerHoldItem;
 
+    public SpriteRenderer NpcSprite;
+
     private void Awake()
     {
         _inDialogue = false;
@@ -60,6 +62,10 @@ public class NpcConfiguration : MonoBehaviour, IInteractable
     {
         if(!AnimationActive && _animation.Length != 0)
             AnimationPlayer(_animation);
+        if (GameObject.FindWithTag("Player").transform.position.y > transform.position.y-0.2f)
+            NpcSprite.sortingOrder = 21;
+        else
+            NpcSprite.sortingOrder = 0;
     }
 
     public void Interact(PlayerInteraction playerInteraction)

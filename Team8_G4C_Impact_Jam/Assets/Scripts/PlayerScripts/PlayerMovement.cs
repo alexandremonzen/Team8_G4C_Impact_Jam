@@ -15,6 +15,8 @@ public sealed class PlayerMovement : MonoBehaviour
 
     private Vector2 _movementVector;
 
+    public Animator _flip;
+
     public Rigidbody2D Rigidbody { get => _rigidbody; }
 
     private void Awake()
@@ -39,6 +41,10 @@ public sealed class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HandleInput();
+        if (_movementVector.x > 0)
+            _flip.SetBool("Active", false);
+        if (_movementVector.x < 0)
+            _flip.SetBool("Active", true);
     }
 
     private void FixedUpdate()
